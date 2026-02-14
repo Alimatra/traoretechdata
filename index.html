@@ -1,81 +1,325 @@
-<!DOCTYPE html>
-<html lang="fr">
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <title>Consultant IA & Data Science</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRAORE TECH DATA | Expert Data Science • IA • Bio-informatique</title>
+  <meta name="description" content="Consultant freelance spécialisé en Data Science, Intelligence Artificielle, Bio-informatique, fine-tuning de LLM, MLOps et déploiement cloud sécurisé." />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: 220 39% 8%;
+      --card: 220 30% 12%;
+      --text: 0 0% 98%;
+      --muted: 220 15% 75%;
+      --primary: 243 75% 62%;
+      --accent: 191 90% 60%;
+      --gradient: linear-gradient(135deg, hsl(243, 75%, 62%), hsl(191, 90%, 60%));
+      --border: 220 30% 20%;
+      --glow: 0 0 25px rgba(99, 102, 241, 0.35);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: hsl(var(--bg));
+      color: hsl(var(--text));
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+    }
+    h1, h2, h3 { font-weight: 800; letter-spacing: -0.025em; }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    main { max-width: 1400px; margin: auto; padding: 0 1.5rem; }
+    section { padding: 8rem 0; }
+    img { max-width: 100%; border-radius: 1rem; }
+    /* ─── NAVBAR ───────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      background: rgba(23, 23, 38, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid hsl(var(--border));
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .nav-links { display: flex; gap: 2.5rem; }
+    .nav-links a {
+      color: hsl(var(--muted));
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .nav-links a:hover { color: white; }
+    /* ─── COMPONENTS ───────────────────── */
+    .card {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      transition: 0.4s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--glow);
+      border-color: hsl(var(--primary));
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 2.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+    }
+    .btn-outline {
+      border: 2px solid hsl(var(--accent));
+      color: hsl(var(--accent));
+    }
+    .btn-outline:hover {
+      background: hsl(var(--accent));
+      color: hsl(var(--bg));
+    }
+    /* Images dans les cartes */
+    .card img {
+      margin-top: 1.5rem;
+      border-radius: 0.8rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card:hover img {
+      transform: scale(1.04);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+    }
+    /* ─── HERO ─────────────────────────── */
+    .hero { padding-top: 12rem; text-align: center; }
+    .hero h1 { font-size: clamp(3rem, 6vw, 6rem); margin-bottom: 2rem; }
+    .hero p { font-size: 1.4rem; color: hsl(var(--muted)); max-width: 900px; margin: auto; }
+    /* ─── GRID ─────────────────────────── */
+    .grid { display: grid; gap: 2.5rem; }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+    /* ─── FOOTER PREMIUM ───────────────── */
+    footer {
+      margin-top: 8rem;
+      background: linear-gradient(180deg, rgba(99, 102, 241, 0.08), rgba(0, 0, 0, 0.85)), hsl(var(--bg));
+      border-top: 1px solid hsl(var(--border));
+    }
+    .footer-container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+    }
+    footer h4 { margin-bottom: 1rem; }
+    footer p, footer a { color: hsl(var(--muted)); text-decoration: none; }
+    footer a:hover { color: white; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-bottom {
+      border-top: 1px solid hsl(var(--border));
+      padding: 1.5rem;
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: hsl(var(--muted));
+    }
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-container { grid-template-columns: 1fr; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Consultant IA & Data Science</h1>
-    <p>Solutions intelligentes pour entreprises ambitieuses</p>
-</header>
-
-<section id="about">
-    <h2>À propos</h2>
-    <p>
-        Consultant spécialisé en Intelligence Artificielle, Machine Learning et Data Science.
-        J’accompagne les entreprises dans la conception, le déploiement et l’optimisation
-        de solutions IA performantes et scalables.
-    </p>
-</section>
-
-<section id="services">
-    <h2>Services</h2>
-
-    <div class="service">
-        <img src="images/ml.jpg" alt="Machine Learning">
-        <h3>Machine Learning & IA</h3>
-        <p>
-            Développement de modèles prédictifs, NLP, LLM, fine-tuning et automatisation intelligente.
-        </p>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">TRAORE TECH DATA</div>
+      <div class="nav-links">
+        <a href="#accueil">Accueil</a>
+        <a href="#expertises">Expertises</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="service">
-        <img src="images/mlops.jpg" alt="MLOps">
-        <h3>MLOps & Déploiement</h3>
-        <p>
-            Mise en production de modèles IA, pipelines automatisés, optimisation des performances.
-        </p>
+  <main id="accueil">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="gradient-text">TRAORE TECH DATA</h1>
+      <p>
+        Consultant freelance expert en <strong>Data Science</strong>, <strong>Intelligence Artificielle</strong> et <strong>Bio-informatique</strong>.<br><br>
+        J’accompagne entreprises, startups et laboratoires dans la transformation de données complexes en solutions IA robustes et déployées en production.
+      </p>
+      <div style="margin-top:3rem;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap">
+        <a href="#contact" class="btn btn-primary">Me contacter</a>
+        <a href="#expertises" class="btn btn-outline">Voir mes expertises</a>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="grid grid-3">
+      <div class="card">
+        <h3 class="gradient-text">+40 %</h3>
+        <p>Amélioration moyenne de performance des modèles IA grâce au fine-tuning ciblé.</p>
+      </div>
+      <div class="card">
+        <h3 class="gradient-text">Azure • AWS</h3>
+        <p>Déploiement cloud sécurisé, scalable et conforme RGPD / HIPAA.</p>
+      </div>
+      <div class="card">
+        <h3 class="gradient-text">LLM • RAG</h3>
+        <p>Applications IA de dernière génération adaptées aux données métier.</p>
+      </div>
+    </section>
+
+    <!-- Expertises détaillées + images -->
+    <section id="expertises">
+      <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 gradient-text">
+        Ce que je propose concrètement
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="card">
+          <h3 class="text-3xl font-bold mb-6 text-white">IA & Machine Learning avancé</h3>
+          <p class="text-[hsl(var(--muted))] mb-6">
+            Conception et optimisation de modèles prédictifs, NLP médical, computer vision sur imagerie
+            biomédicale, transformers et fine-tuning de LLM (Large Language Models) pour des tâches
+            spécifiques comme l’analyse de littérature scientifique, la génération d’hypothèses ou
+            l’extraction d’entités nommées en pharmacovigilance.
+          </p>
+          <img src="https://miro.medium.com/v2/resize:fit:1200/0*OP0Gl8NaUjXUvfRD.jpg"
+               alt="Schéma fine-tuning LLM">
+        </div>
+
+        <div class="card">
+          <h3 class="text-3xl font-bold mb-6 text-white">Bio-informatique & Analyse omique</h3>
+          <p class="text-[hsl(var(--muted))] mb-6">
+            Traitement de données NGS, single-cell RNA-seq, protéomique, métagénomique. Construction de
+            pipelines reproductibles (Nextflow, Snakemake), clustering avancé (UMAP/t-SNE), détection de
+            biomarqueurs, intégration multi-omique et interprétation biologique/clinique pour accélérer la
+            découverte en oncologie, maladies rares ou microbiote.
+          </p>
+          <img src="https://miro.medium.com/1*HZZeA7LBhC6RtW8eLYgMnQ.gif"
+               alt="Dashboard interactif UMAP single-cell bioinfo">
+        </div>
+
+        <div class="card">
+          <h3 class="text-3xl font-bold mb-6 text-white">MLOps & Industrialisation</h3>
+          <p class="text-[hsl(var(--muted))] mb-6">
+            Passage du notebook au produit : containerisation (Docker), orchestration (Kubernetes), CI/CD,
+            monitoring drift/performance (Prometheus, Evidently), versioning modèles (MLflow, Azure ML),
+            déploiement sécurisé sur cloud (Azure ML endpoints, AWS SageMaker). Garantie de traçabilité,
+            scalabilité et conformité RGPD/HIPAA.
+          </p>
+          <img src="https://miro.medium.com/v2/resize:fit:1200/1*RXD8hqmXheaJ8cxOG61XEg.jpeg"
+               alt="Pipeline MLOps CI/CD Docker AWS">
+        </div>
+
+        <div class="card">
+          <h3 class="text-3xl font-bold mb-6 text-white">Data Viz & Stratégie décisionnelle</h3>
+          <p class="text-[hsl(var(--muted))] mb-6">
+            Création de dashboards interactifs (Plotly Dash, Streamlit, Power BI) pour explorer et
+            communiquer les résultats : heatmaps, volcano plots, pathways enrichis, tracking de métriques
+            business (ROI projet IA, réduction temps d’analyse). Accompagnement à la prise de décision
+            data-driven en labo, pharma ou biotech.
+          </p>
+          <img src="https://www.rna-seqblog.com/wp-content/uploads/2019/01/single-cell%20dashboard-0.png"
+               alt="Dashboard interactif bioinformatique single-cell">
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="text-align:center">
+      <h2>Travaillons ensemble</h2>
+      <p style="color:hsl(var(--muted));max-width:800px;margin:2rem auto">
+        Vous avez un projet IA, data ou bio-informatique ? Je vous accompagne de la conception à la mise en production.
+      </p>
+      <a href="mailto:contact@traoretechdata.fr" class="btn btn-primary">
+        contact@traoretechdata.fr
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h3 class="gradient-text">TRAORE TECH DATA</h3>
+        <p>Consultant indépendant spécialisé en Data Science, Intelligence Artificielle et Bio-informatique.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#expertises">Expertises</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Expertises</h4>
+        <ul>
+          <li>IA & Machine Learning</li>
+          <li>Bio-informatique</li>
+          <li>MLOps & Cloud</li>
+          <li>Data Visualisation</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@traoretechdata.fr">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/alimatou-traore-" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li>France • Remote</li>
+        </ul>
+      </div>
     </div>
-
-    <div class="service">
-        <img src="images/data.jpg" alt="Data Science">
-        <h3>Data Science & Analyse</h3>
-        <p>
-            Analyse avancée, visualisation de données, aide à la décision stratégique.
-        </p>
+    <div class="footer-bottom">
+      <span>© 2026 TRAORE TECH DATA</span>
+      <span>
+        <a href="#">Mentions légales</a> • <a href="#">Politique de confidentialité</a>
+      </span>
     </div>
-
-</section>
-
-<section id="impact">
-    <h2>Impact & ROI</h2>
-    <p>
-        Mes solutions sont conçues pour générer un retour sur investissement concret :
-    </p>
-    <ul>
-        <li>✔ Réduction des coûts opérationnels</li>
-        <li>✔ Automatisation de tâches chronophages</li>
-        <li>✔ Optimisation des performances internes</li>
-        <li>✔ Amélioration de la prise de décision stratégique</li>
-        <li>✔ Gain de productivité mesurable</li>
-    </ul>
-    <p>
-        L’objectif n’est pas seulement d’implémenter de l’IA,
-        mais de créer un avantage compétitif durable.
-    </p>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email : contact@votresite.com</p>
-</section>
-
-<footer>
-    <p>© 2026 - Consultant IA & Data</p>
-</footer>
+  </footer>
 
 </body>
 </html>
